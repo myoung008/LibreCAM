@@ -5,7 +5,7 @@
 #include "profile/ui/camprofilesettings.h"
 
 #include <QDir>
-#include <QDesktopServices>
+#include <QStandardPaths>
 #include <QListIterator>
 #include <QLocale>
 
@@ -32,7 +32,7 @@ CAMProfileSettingsList::~CAMProfileSettingsList()
   *
   */
 void CAMProfileSettingsList::savePreferences() {
-    QString location = QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation) + QDir::separator() + "rvtcam" + QDir::separator() + "profile.xml";
+    QString location = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + QDir::separator() + "rvtcam" + QDir::separator() + "profile.xml";
 
     QFile file(location);
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -60,7 +60,8 @@ void CAMProfileSettingsList::savePreferences() {
   *
   */
 void CAMProfileSettingsList::loadPreferences() {
-    QString location = QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation) + QDir::separator() + "rvtcam" + QDir::separator() + "profile.xml";
+    QString location = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + QDir::separator() + "rvtcam" + QDir::separator() + 
+"profile.xml";
 
     QFile file(location);
     if (file.open(QIODevice::ReadOnly)) {

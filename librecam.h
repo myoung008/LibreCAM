@@ -23,7 +23,8 @@ class CAMProfileWidget;
 class librecam : public QObject, QC_PluginInterface
 {
     Q_OBJECT
-     Q_INTERFACES(QC_PluginInterface)
+    Q_INTERFACES(QC_PluginInterface)
+    Q_PLUGIN_METADATA(IID LC_DocumentInterface_iid FILE  "librecam.json")
 
  public:
     librecam();

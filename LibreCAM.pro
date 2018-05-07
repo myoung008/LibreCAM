@@ -8,10 +8,11 @@ QT       += gui xml
 TEMPLATE = lib
 CONFIG += plugin
 VERSION = 1.0.0
-PLUGIN_NAME=librecam
+TARGET=$$qtLibraryTarget(librecam)
 
+GENERATED_DIR = ../../generated/plugin/LibreCAM
 # Use common project definitions.
-include(../../common.pro)
+include(../../common.pri)
 
 # For plugins
 INCLUDEPATH    += ../../librecad/src/plugins
@@ -38,16 +39,15 @@ FORMS += \
     profile/ui/camprofilesettingslist.ui
 
 win32 {
-        DLLDESTDIR = ../../windows/resources/plugins
-        TARGET = $$PLUGIN_NAME
+        DESTDIR = ../../windows/resources/plugins
 }
 
 unix {
     macx {
-	TARGET = ../../LibreCAD.app/Contents/Resources/plugins/$$PLUGIN_NAME
+	  DESTDIR = ../../LibreCAD.app/Contents/Resources/plugins
     }
     else {
-	TARGET = ../../unix/resources/plugins/$$PLUGIN_NAME
+	  DESTDIR = ../../unix/resources/plugins
     }
 }
 
